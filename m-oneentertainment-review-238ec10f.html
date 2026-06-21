@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>壹号娱乐 · 简明指南</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: #f2f4f7;
+      color: #1e293b;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+    /* 顶部导航 */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #ffffff;
+      padding: 0.85rem 1.5rem;
+      border-radius: 14px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      border: 1px solid #e6edf4;
+      margin-bottom: 2.4rem;
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: #0b2b44;
+    }
+    .logo-icon {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: #2b6f9c;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #2c3e50;
+      font-size: 0.95rem;
+      font-weight: 450;
+      letter-spacing: 0.01em;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover {
+      color: #1d5b83;
+    }
+    @media (max-width: 600px) {
+      .navbar {
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+      .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+    }
+    /* 卡片通用设计 */
+    .card {
+      background: #ffffff;
+      border: 1px solid #e3eaf0;
+      border-radius: 18px;
+      padding: 1.8rem 2rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0,0,0,0.03);
+      transition: box-shadow 0.2s;
+    }
+    .card + .card {
+      margin-top: 1.5rem;
+    }
+    .card:hover {
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0,0,0,0.02);
+    }
+    /* Hero 区域 — 简介 */
+    .hero-card {
+      background: #ffffff;
+      border-left: 4px solid #316d96;
+    }
+    .hero-card h1 {
+      font-size: 1.9rem;
+      font-weight: 550;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.65rem;
+      color: #0b2b44;
+    }
+    .hero-card p {
+      max-width: 680px;
+      color: #2c3f52;
+      margin-bottom: 0.3rem;
+    }
+    .hero-card .light-meta {
+      display: inline-block;
+      background: #eef3f9;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      color: #3a5e7a;
+      margin-top: 0.45rem;
+    }
+    /* 场景模块 (三列/响应) */
+    .scene-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 1.8rem 0;
+    }
+    .scene-card {
+      background: #ffffff;
+      border: 1px solid #e3eaf0;
+      border-radius: 18px;
+      padding: 1.6rem 1.4rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+    }
+    .scene-card h3 {
+      font-size: 1.2rem;
+      font-weight: 520;
+      margin-bottom: 0.5rem;
+      color: #143a53;
+      border-bottom: 2px solid #edf3fa;
+      padding-bottom: 0.4rem;
+    }
+    .scene-card p {
+      font-size: 0.95rem;
+      color: #2e4158;
+      margin: 0.8rem 0 0.2rem;
+    }
+    .scene-tag {
+      display: inline-block;
+      background: #eaf1f9;
+      padding: 0.1rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      color: #1c5277;
+      margin-top: 0.5rem;
+    }
+    @media (max-width: 760px) {
+      .scene-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    /* 常见说明 (FAQ 摘要) */
+    .faq-item {
+      border-bottom: 1px solid #e9edf3;
+      padding: 1rem 0;
+    }
+    .faq-item:first-of-type {
+      padding-top: 0;
+    }
+    .faq-item:last-of-type {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .faq-question {
+      font-weight: 540;
+      color: #133348;
+      margin-bottom: 0.25rem;
+    }
+    .faq-answer {
+      color: #334e66;
+      font-size: 0.95rem;
+    }
+    .faq-answer a {
+      color: #1d5b83;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-color: #b3c9dd;
+      font-weight: 450;
+    }
+    .faq-answer a:hover {
+      color: #0a3f5e;
+      text-decoration-color: #1d5b83;
+    }
+    /* 提示条 */
+    .note-banner {
+      background: #eaf1f9;
+      border-left: 4px solid #386f98;
+      padding: 1rem 1.6rem;
+      border-radius: 12px;
+      margin: 1.8rem 0 1rem;
+      font-size: 0.95rem;
+      color: #1f3b4f;
+    }
+    .note-banner strong {
+      color: #0b2f46;
+    }
+    /* Footer */
+    .footer-note {
+      text-align: center;
+      margin-top: 2.6rem;
+      padding: 0.8rem 0;
+      color: #6a7d91;
+      font-size: 0.85rem;
+      border-top: 1px solid #dde3ec;
+    }
+    .footer-note a {
+      color: #2b5e81;
+      text-decoration: none;
+    }
+    .footer-note a:hover {
+      text-decoration: underline;
+    }
+    /* 通用 */
+    hr {
+      border: none;
+      border-top: 1px solid #e0e7ef;
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 顶部导航 -->
+  <nav class="navbar">
+    <div class="logo-area">
+      <span class="logo-icon"></span>
+      <span>壹号·导航</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#intro">简介</a></li>
+      <li><a href="#scenes">场景</a></li>
+      <li><a href="#faq">说明</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero / 核心介绍 -->
+  <div class="card hero-card" id="intro">
+    <h1>关于壹号娱乐 · 简明指南</h1>
+    <p>
+      这是一份为你整理的页面，帮助你快速了解 <a href="https://m-oneentertainment.com" style="color:#1d5b83; text-decoration: underline; text-underline-offset: 2px;">壹号娱乐</a> 所提供的基础内容与访问要点。以下信息均以客观、清晰的方式呈现，不包含主观评价或诱导性表述。
+    </p>
+    <p>
+      若你正在寻找该平台的实用指引，本页围绕三个常见使用场景以及访问前需要了解的若干说明进行梳理，可作为一份轻量参考。
+    </p>
+    <span class="light-meta">最近更新 · 内容摘要</span>
+  </div>
+
+  <!-- 三个场景模块 -->
+  <h2 style="font-weight: 520; margin: 1.6rem 0 0.2rem 0; color: #163a53;">常用场景</h2>
+  <p style="margin-bottom: 0.6rem; font-size: 0.95rem; color: #475e74;">以下场景基于普遍使用习惯归纳，实际情况可能略有差异。</p>
+  <div class="scene-grid" id="scenes">
+    <div class="scene-card">
+      <h3>📌 信息浏览</h3>
+      <p>通过 <a href="https://m-oneentertainment.com" style="color:#1d5b83; text-decoration: underline; text-underline-offset: 2px;">壹号娱乐</a> 可了解娱乐资讯、内容动态及服务概览。建议先熟悉界面分区与导航逻辑。</p>
+      <span class="scene-tag">浏览前准备</span>
+    </div>
+    <div class="scene-card">
+      <h3>📌 内容查找</h3>
+      <p>网站内设有分类及检索功能，可根据关键词或类别筛选。遇到不明确的内容可查看帮助或常见问题。</p>
+      <span class="scene-tag">查找提示</span>
+    </div>
+    <div class="scene-card">
+      <h3>📌 账户相关</h3>
+      <p>如需注册或管理账户，可在网站对应模块操作。请注意保管个人信息，并阅读相关服务条款。</p>
+      <span class="scene-tag">账户提醒</span>
+    </div>
+  </div>
+
+  <!-- 常见说明 (FAQ 摘要) -->
+  <div class="card" id="faq">
+    <h2 style="font-size: 1.4rem; font-weight: 540; margin-bottom: 0.25rem; color: #163a53;">常见说明</h2>
+    <p style="margin-bottom: 1.2rem; color: #3f5a72; font-size: 0.95rem;">以下为访问前值得留意的几点，并非完整版条款，请以网站实际内容为准。</p>
+    <div class="faq-item">
+      <div class="faq-question">⚡ 访问前提</div>
+      <div class="faq-answer">
+        建议使用主流浏览器并保持更新，部分功能可能需要启用 JavaScript。平台稳定性与网络环境有关。
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">⚡ 内容说明</div>
+      <div class="faq-answer">
+        <a href="https://m-oneentertainment.com">壹号娱乐</a> 所呈现的内容均来自其官方发布，不保证所有第三方引用或外部链接的实时准确性。
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">⚡ 隐私与安全</div>
+      <div class="faq-answer">
+        任何涉及个人数据的操作请仔细阅读网站的隐私政策。建议不在公共设备保存登录状态。
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">⚡ 访问限制</div>
+      <div class="faq-answer">
+        某些地区或网络环境下可能无法正常连接，可尝试更换网络或咨询服务提供方。
+      </div>
+    </div>
+  </div>
+
+  <!-- 提示条（额外说明） -->
+  <div class="note-banner">
+    <strong>💡 访问提醒</strong> · 如果你正在寻找 <a href="https://m-oneentertainment.com" style="color:#1d5b83; text-decoration: underline; text-underline-offset: 2px;">壹号娱乐</a> 的官方网站，请直接点击上方链接（或页面中的链接）前往。本页仅为辅助说明，不替代原站内容。
+  </div>
+
+  <!-- Footer -->
+  <div class="footer-note">
+    本页仅为信息整理 · 与 <a href="https://m-oneentertainment.com">壹号娱乐</a> 无关联关系 · 内容仅供参考
+  </div>
+
+</div>
+</body>
+</html>
